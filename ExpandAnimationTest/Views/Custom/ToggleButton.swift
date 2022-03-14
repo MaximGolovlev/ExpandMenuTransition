@@ -9,16 +9,19 @@
 import UIKit
 
 class UIToggleButton: UIButton {
+    
     var isOn:Bool = false{
         didSet{
             updateDisplay()
         }
     }
+    
     var onImage:UIImage! = nil{
         didSet{
             updateDisplay()
         }
     }
+    
     var offImage:UIImage! = nil{
         didSet{
             updateDisplay()

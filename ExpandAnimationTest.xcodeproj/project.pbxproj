@@ -25,6 +25,7 @@
 		9484A53527DF7B6A002F1967 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484A53427DF7B6A002F1967 /* DetailView.swift */; };
 		9484A53727DF7BF8002F1967 /* BlurredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484A53627DF7BF8002F1967 /* BlurredView.swift */; };
 		9484A53927DF80FC002F1967 /* ViewTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484A53827DF80FC002F1967 /* ViewTransitionAnimator.swift */; };
+		9484A53D27DF98E1002F1967 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9484A53C27DF98E1002F1967 /* DetailViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		9484A53427DF7B6A002F1967 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9484A53627DF7BF8002F1967 /* BlurredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredView.swift; sourceTree = "<group>"; };
 		9484A53827DF80FC002F1967 /* ViewTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionAnimator.swift; sourceTree = "<group>"; };
+		9484A53C27DF98E1002F1967 /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,26 +82,23 @@
 		9463E57127DB577200B337B9 /* ExpandAnimationTest */ = {
 			isa = PBXGroup;
 			children = (
+				9484A53A27DF9813002F1967 /* App */,
+				9484A53B27DF9836002F1967 /* SupportingFiles */,
 				9463E59927DE39EF00B337B9 /* Helpers */,
 				9463E59427DE329B00B337B9 /* Models */,
 				9463E58F27DB60AD00B337B9 /* Managers */,
 				9463E58927DB58F000B337B9 /* Views */,
-				9463E58627DB583D00B337B9 /* Controllers */,
-				9463E57227DB577200B337B9 /* AppDelegate.swift */,
-				9463E57427DB577200B337B9 /* SceneDelegate.swift */,
-				9463E57B27DB577500B337B9 /* Assets.xcassets */,
-				9463E57D27DB577500B337B9 /* LaunchScreen.storyboard */,
-				9463E58027DB577500B337B9 /* Info.plist */,
+				9463E58627DB583D00B337B9 /* View Controllers */,
 			);
 			path = ExpandAnimationTest;
 			sourceTree = "<group>";
 		};
-		9463E58627DB583D00B337B9 /* Controllers */ = {
+		9463E58627DB583D00B337B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				9463E58727DB585600B337B9 /* MainViewController.swift */,
 			);
-			path = Controllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		9463E58927DB58F000B337B9 /* Views */ = {
@@ -170,8 +169,28 @@
 			isa = PBXGroup;
 			children = (
 				9484A53427DF7B6A002F1967 /* DetailView.swift */,
+				9484A53C27DF98E1002F1967 /* DetailViewCell.swift */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		9484A53A27DF9813002F1967 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9463E57227DB577200B337B9 /* AppDelegate.swift */,
+				9463E57427DB577200B337B9 /* SceneDelegate.swift */,
+				9463E57D27DB577500B337B9 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9484A53B27DF9836002F1967 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9463E58027DB577500B337B9 /* Info.plist */,
+				9463E57B27DB577500B337B9 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +281,7 @@
 				9463E57527DB577200B337B9 /* SceneDelegate.swift in Sources */,
 				9463E59B27DE3A4200B337B9 /* UIStackView+Ext.swift in Sources */,
 				9463E58B27DB596500B337B9 /* MenuIconView.swift in Sources */,
+				9484A53D27DF98E1002F1967 /* DetailViewCell.swift in Sources */,
 				9463E58827DB585600B337B9 /* MainViewController.swift in Sources */,
 				9484A53927DF80FC002F1967 /* ViewTransitionAnimator.swift in Sources */,
 			);
@@ -404,7 +424,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B7HZ65DT3V;
-				INFOPLIST_FILE = ExpandAnimationTest/Info.plist;
+				INFOPLIST_FILE = ExpandAnimationTest/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,7 +443,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B7HZ65DT3V;
-				INFOPLIST_FILE = ExpandAnimationTest/Info.plist;
+				INFOPLIST_FILE = ExpandAnimationTest/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,7 +8,6 @@
 import UIKit
 
 struct MenuViewAppearance {
-    
     static var iconSize = CGSize(width: 140, height: 140)
     static var iconInsets: CGFloat = 10
     static var buttonSize: CGSize {
@@ -26,14 +25,12 @@ class MenuView: UIView {
     
     typealias Appearance = MenuViewAppearance
     
-    lazy var animator = CardOpenAnimator(cardView: self.iconsCollection, expandContainer: self.expandContainer, superview: self)
+    private lazy var animator = CardOpenAnimator(cardView: self.iconsCollection, expandContainer: self.expandContainer, superview: self)
     
-    lazy var iconsCollection: MenuIconView = {
+    private lazy var iconsCollection: MenuIconView = {
         $0.layer.cornerRadius = Appearance.cornerRadiusSmall
         $0.longPressHandler = { [weak self] in
-            self?.animator.runPresentAnimation(completion: {
-                print("animated")
-            })
+            self?.animator.runPresentAnimation()
         }
         $0.buttonLongPressHandler = { [weak self] in
             self?.presentDetailView()
@@ -41,21 +38,21 @@ class MenuView: UIView {
         return $0
     }(MenuIconView())
     
-    var expandContainer: UIView = {
+    private var expandContainer: UIView = {
         $0.layer.cornerRadius = Appearance.cornerRadiusBig
         return $0
     }(UIView())
     
-    lazy var tapGesture: UITapGestureRecognizer = {
+    private lazy var tapGesture: UITapGestureRecognizer = {
         $0.delegate = self
         $0.addTarget(self, action: #selector(tapGestureHandler))
         return $0
     }(UITapGestureRecognizer())
     
-    lazy var detailView: DetailView = {
+    private lazy var detailView: DetailView = {
         $0.isHidden = true
         return $0
-    }(DetailView())
+    }(DetailView(rows: [DetailView.Row(title: "AM61", subtitle: "Не подкл."), DetailView.Row(title: "iPad", subtitle: "Не подкл.")]))
     
     init() {
         super.init(frame: .zero)
@@ -93,10 +90,10 @@ class MenuView: UIView {
     
     @objc private func tapGestureHandler(sender: UITapGestureRecognizer) {
         guard detailView.isHidden else {
-            ViewTransitionAnimator.swap(oldView: detailView, newView: iconsCollection) {}
+            ViewTransitionAnimator.swap(oldView: detailView, newView: iconsCollection)
             return
         }
-        animator.runDismissAnimation(completion: nil)
+        animator.runDismissAnimation()
     }
     
     func update(icons: [MenuIcon]) {
@@ -104,9 +101,7 @@ class MenuView: UIView {
     }
     
     private func presentDetailView() {
-        ViewTransitionAnimator.swap(oldView: iconsCollection, newView: detailView) {
-            
-        }
+        ViewTransitionAnimator.swap(oldView: iconsCollection, newView: detailView)
     }
 }
 

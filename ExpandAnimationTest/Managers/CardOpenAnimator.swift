@@ -35,18 +35,18 @@ enum CardTransitionType {
 
 class CardOpenAnimator {
     
-    var cardView: CardView
-    var expandContainer: UIView
-    var superview: UIView
-    var cardViewFrame: CGRect
-    var containerFrame: CGRect
+    private var cardView: CardView
+    private var expandContainer: UIView
+    private var superview: UIView
+    private var cardViewFrame: CGRect
+    private var containerFrame: CGRect
     
-    var oldCornerRadius: CGFloat
-    var newCornerRadius: CGFloat
+    private var oldCornerRadius: CGFloat
+    private var newCornerRadius: CGFloat
     
-    var transition: CardTransitionType = .collapsed
-    let transitionDuration: Double = 0.5
-    let shrinkDuration: Double = 0.1
+    private var transition: CardTransitionType = .collapsed
+    private let transitionDuration: Double = 0.5
+    private let shrinkDuration: Double = 0.1
     
     var nextFrame: CGRect { self.transition.next == .collapsed ? self.cardViewFrame : self.containerFrame }
     
@@ -80,7 +80,7 @@ class CardOpenAnimator {
         return animator
     }
     
-    func runPresentAnimation(completion: (() -> Void)?) {
+    func runPresentAnimation(completion: (() -> Void)? = nil) {
         
         guard self.transition == .collapsed else { return }
         
@@ -101,7 +101,7 @@ class CardOpenAnimator {
         shrinkAnimator.startAnimation()
     }
     
-    func runDismissAnimation(completion: (() -> Void)?) {
+    func runDismissAnimation(completion: (() -> Void)? = nil) {
         
         guard self.transition == .expanded else { return }
         

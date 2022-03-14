@@ -11,29 +11,29 @@ class MenuIconCollection: UIView {
     
     typealias Appearance = MenuViewAppearance
     
-    var scrollView: UIScrollView = {
+    private var scrollView: UIScrollView = {
         $0.showsHorizontalScrollIndicator = false
         return $0
     }(UIScrollView())
     
-    var sectionsContainer: UIStackView = {
+    private var sectionsContainer: UIStackView = {
         $0.axis = .vertical
         return $0
     }(UIStackView())
     
-    var sectionContainer: UIStackView {
+    private var sectionContainer: UIStackView {
         let s = UIStackView()
         s.axis = .horizontal
         s.distribution = .fillEqually
         return s
     }
     
-    var header: UIView = {
+    private var header: UIView = {
         $0.snp.makeConstraints({ $0.height.equalTo(Appearance.expandedTopOffset) })
         return $0
     }(UIView())
     
-    var footer: UIView = {
+    private var footer: UIView = {
         $0.snp.makeConstraints({ $0.height.equalTo(Appearance.expandedBotOffset) })
         return $0
     }(UIView())
@@ -107,13 +107,12 @@ extension MenuIconCollection: CardView {
         scrollView.showsVerticalScrollIndicator = viewMode == .full
     }
     
+    func animateLayout(viewMode: CardViewMode) {
+        buttons.forEach({ $0.animateLayout(viewMode: viewMode) })
+    }
     
     func endUpdateLayout(viewMode: CardViewMode, newFrame: CGRect) {
         
-    }
-    
-    func animateLayout(viewMode: CardViewMode) {
-        buttons.forEach({ $0.animateLayout(viewMode: viewMode) })
     }
 }
 

@@ -30,14 +30,14 @@ class ViewTransitionAnimator {
         }
     }
     
-    static func swap(oldView: UIView, newView: UIView, completion: (() -> Void)?) {
+    static func swap(oldView: UIView, newView: UIView, completion: (() -> Void)? = nil) {
         
         dismiss(view: oldView) {
             reveal(view: newView, completion: completion)
         }
     }
     
-    static func reveal(view: UIView, completion: (() -> Void)?) {
+    static func reveal(view: UIView, completion: (() -> Void)? = nil) {
         
         let animator = makeRevealAnimator(view: view)
         animator.addCompletion({ _ in
@@ -47,7 +47,7 @@ class ViewTransitionAnimator {
         animator.startAnimation()
     }
     
-    static func dismiss(view: UIView, completion: (() -> Void)?) {
+    static func dismiss(view: UIView, completion: (() -> Void)? = nil) {
         
         let animator = makeDismissAnimator(view: view)
         animator.addCompletion({ _ in

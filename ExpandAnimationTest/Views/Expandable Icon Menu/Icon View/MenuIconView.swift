@@ -16,7 +16,7 @@ class MenuIconView: BlurredView {
     
     private lazy var longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressTapped))
     
-    lazy var collection: MenuIconCollection = {
+    private lazy var collection: MenuIconCollection = {
         return $0
     }(MenuIconCollection())
 
@@ -79,14 +79,14 @@ extension MenuIconView: CardView {
         collection.beginUpdateLayout(viewMode: viewMode, newFrame: newFrame)
     }
     
+    func animateLayout(viewMode: CardViewMode) {
+        self.viewMode = viewMode
+        collection.animateLayout(viewMode: viewMode)
+    }
+    
     func endUpdateLayout(viewMode: CardViewMode, newFrame: CGRect) {
         self.viewMode = viewMode
         update(buttons: buttons, viewMode: viewMode)
         collection.endUpdateLayout(viewMode: viewMode, newFrame: newFrame)
-    }
-    
-    func animateLayout(viewMode: CardViewMode) {
-        self.viewMode = viewMode
-        collection.animateLayout(viewMode: viewMode)
     }
 }

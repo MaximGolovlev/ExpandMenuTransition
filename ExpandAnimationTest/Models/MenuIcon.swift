@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum MenuIcon {
     
     case airplane
@@ -20,8 +19,7 @@ enum MenuIcon {
     var image: UIImage? {
         switch self {
         case .airplane:
-            let image = UIImage(systemName: "airplane")
-            return image
+            return UIImage(systemName: "airplane")
         case .antenna:
             return UIImage(systemName: "antenna.radiowaves.left.and.right")
         case .wifi:

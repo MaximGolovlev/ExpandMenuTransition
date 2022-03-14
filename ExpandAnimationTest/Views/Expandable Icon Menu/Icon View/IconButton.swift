@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class IconButton: UIView {
     
     typealias Appearance = MenuViewAppearance
@@ -15,16 +14,16 @@ class IconButton: UIView {
     var longPressHandler: (() -> Void)?
     var tapHandler: (() -> Void)?
     
-    var mainContainerView: UIStackView = {
+    private var mainContainerView: UIStackView = {
         $0.alignment = .center
         $0.axis = .vertical
         return $0
     }(UIStackView())
     
-    lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector (tapSelected))
-    lazy var longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressSelected))
+    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector (tapSelected))
+    private lazy var longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressSelected))
     
-    var header: UIView = {
+    private var header: UIView = {
         $0.snp.makeConstraints({ $0.height.equalTo(10) })
         return $0
     }(UIView())
@@ -38,20 +37,20 @@ class IconButton: UIView {
         return $0
     }(UIToggleButton(type: .custom))
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         return $0
     }(UILabel())
     
-    var statusLabel: UILabel = {
+    private var statusLabel: UILabel = {
         $0.text = "Выкл"
         $0.textColor = .white
         $0.font = .systemFont(ofSize: 12, weight: .regular)
         return $0
     }(UILabel())
     
-    var footer: UIView = {
+    private var footer: UIView = {
         $0.snp.makeConstraints({ $0.height.equalTo(10) })
         return $0
     }(UIView())
@@ -113,12 +112,11 @@ extension IconButton: CardView {
         }
     }
     
-    func endUpdateLayout(viewMode: CardViewMode, newFrame: CGRect) {
+    func animateLayout(viewMode: CardViewMode) {
         
     }
     
-    
-    func animateLayout(viewMode: CardViewMode) {
+    func endUpdateLayout(viewMode: CardViewMode, newFrame: CGRect) {
         
     }
 }
