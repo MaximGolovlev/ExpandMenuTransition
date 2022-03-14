@@ -32,8 +32,13 @@ class MenuView: UIView {
         $0.longPressHandler = { [weak self] in
             self?.animator.runPresentAnimation()
         }
-        $0.buttonLongPressHandler = { [weak self] in
-            self?.presentDetailView()
+        $0.buttonLongPressHandler = { [weak self] viewMode in
+            switch viewMode {
+            case .card:
+                self?.animator.runPresentAnimation()
+            case .full:
+                self?.presentDetailView()
+            }
         }
         return $0
     }(MenuIconView())

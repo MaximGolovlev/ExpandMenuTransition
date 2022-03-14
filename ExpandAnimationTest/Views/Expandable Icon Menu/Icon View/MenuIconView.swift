@@ -12,7 +12,7 @@ class MenuIconView: BlurredView {
     typealias Appearance = MenuViewAppearance
     
     var longPressHandler: (() -> Void)?
-    var buttonLongPressHandler: (() -> Void)?
+    var buttonLongPressHandler: ((CardViewMode) -> Void)?
     
     private lazy var longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressTapped))
     
@@ -58,8 +58,9 @@ class MenuIconView: BlurredView {
         buttons = icons.map({
             let b = IconButton(frame: .zero, icon: $0)
             b.longPressHandler = { [weak self] in
-                guard self?.viewMode != .card else { return }
-                self?.buttonLongPressHandler?()
+                if let viewMode = self?.viewMode {
+                    self?.buttonLongPressHandler?(viewMode)
+                }
             }
             return b
         })
